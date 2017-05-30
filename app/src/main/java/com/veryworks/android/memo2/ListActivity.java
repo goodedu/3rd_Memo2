@@ -13,8 +13,6 @@ import com.veryworks.android.memo2.domain.Memo;
 
 import java.util.ArrayList;
 
-import static com.veryworks.android.memo2.domain.Loader.getData;
-
 public class ListActivity extends AppCompatActivity {
 
     RecyclerAdapter adapter;
@@ -25,7 +23,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         // 1. 데이터
-        ArrayList<Memo> datas = getData(this);
+        ArrayList<Memo> datas = Loader.getData(this);
         // 2. 아답터
         adapter = new RecyclerAdapter(datas);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -43,6 +41,8 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
+    // 디테일 액티비티를 열었다가 종료하면 호출될때
+    // 데이터를 갱신하고, 목록을 다시 그려준다.
     @Override
     protected void onResume() {
         super.onResume();
