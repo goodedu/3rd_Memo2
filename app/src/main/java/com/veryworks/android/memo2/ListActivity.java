@@ -13,7 +13,11 @@ import com.veryworks.android.memo2.domain.Memo;
 
 import java.util.ArrayList;
 
+import static com.veryworks.android.memo2.domain.Loader.getData;
+
 public class ListActivity extends AppCompatActivity {
+
+    RecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +25,9 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         // 1. 데이터
-        ArrayList<Memo> datas = Loader.getData(this);
+        ArrayList<Memo> datas = getData(this);
         // 2. 아답터
-        RecyclerAdapter adapter = new RecyclerAdapter(datas);
+        adapter = new RecyclerAdapter(datas);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         // 3. 레이아웃 매니저
@@ -39,4 +43,12 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 데이터를 갱신
+        Loader.getData(this);
+        // 아답터를 갱신
+        adapter.notifyDataSetChanged();
+    }
 }

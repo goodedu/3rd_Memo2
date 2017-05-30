@@ -18,8 +18,13 @@ public class Loader {
     // 1. 메모를 저장한 디렉토리를 리스팅해서 파일 목록과
     // 2. 해당 파일의 내용 첫줄
     // 3. 해당 파일의 수정일자를 담아서 리턴한다.
+    static ArrayList<Memo> datas = new ArrayList<>(); // 195번지
+
     public static ArrayList<Memo> getData(Context context){
-        ArrayList<Memo> datas = new ArrayList<>();
+        // 이전의 데이터를 삭제하고
+        datas.clear();
+        // 아래에서 데이터를 다시 입력해준다.
+
         // 1.1 목록을 가져올 디렉토리경로를 파일 클래스로 생성하고
         File dir = new File(DIR);
         // 1.2 파일 클래스에 정의된 listFiles 함수를 이용해서 파일목록을 가져온다.

@@ -30,19 +30,20 @@ public class DetailActivity extends AppCompatActivity {
         if(bundle != null) {
             document_id = bundle.getString(DOC_KEY_NAME);
         }
+        // 1. 소스코드와 위젯을 연결
         editText = (EditText) findViewById(R.id.editText);
         btnSave = (FloatingActionButton) findViewById(R.id.fab);
 
-        // 가. 액티비티가 실행되면 파일의 내용을 불러와서 화면에 뿌려준다.
-        loadContent();
-
-        // 나. 버튼이 클릭되면 메모를 저장한다.
+        // 2. 버튼이 클릭되면 메모를 저장한다.
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 writeContent();
             }
         });
+
+        // 3. 화면에서 사용할 데이터가 있으면 체크해서 출력해준다.
+        loadContent();
     }
 
     private void writeContent(){
@@ -56,6 +57,8 @@ public class DetailActivity extends AppCompatActivity {
         }
         // 3. 메모를 파일에 저장한다.
         FileUtil.write(this, filename, content);
+
+        finish();
     }
 
     private void loadContent(){
