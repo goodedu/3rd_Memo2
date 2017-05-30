@@ -1,11 +1,11 @@
 package com.veryworks.android.memo2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.veryworks.android.memo2.domain.Loader;
@@ -19,8 +19,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         // 1. 데이터
         ArrayList<Memo> datas = Loader.getData(this);
@@ -35,7 +33,8 @@ public class ListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+                Intent intent = new Intent(ListActivity.this, DetailActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -23,7 +23,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
     // inflator 로 xml 을 호출해서 View 인스턴스를 생성한다.
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         return new Holder(view);
     }
