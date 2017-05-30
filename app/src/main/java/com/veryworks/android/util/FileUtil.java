@@ -45,10 +45,10 @@ public class FileUtil {
     }
 
     // 파일쓰기
-    public static void write(Context context, String value){
+    public static void write(Context context, String filename, String value){
         try {
             // 1. 스트림을 열어야 됩니다.
-            FileOutputStream fos = context.openFileOutput("filename.txt", MODE_PRIVATE);
+            FileOutputStream fos = context.openFileOutput(filename, MODE_PRIVATE);
             // 2. 스트림을 통해서 데이터를 쓰고
             fos.write(value.getBytes());
             fos.close();
