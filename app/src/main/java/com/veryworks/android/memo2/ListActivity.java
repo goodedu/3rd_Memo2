@@ -46,6 +46,8 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        /* 아래 코드는 최초 두번 호출되는 문제점이 있다.
+          - 각자 해결 */
         // 데이터를 갱신
         Loader.getData(this);
         // 아답터를 갱신
